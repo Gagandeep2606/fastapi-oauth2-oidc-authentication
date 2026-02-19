@@ -3,6 +3,8 @@
 from authlib.integrations.starlette_client import OAuth
 from core.config import GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET
 
+import secrets
+
 oauth = OAuth()
 
 oauth.register(
@@ -14,3 +16,7 @@ oauth.register(
         "scope": "openid email profile"
     }
 )
+
+
+def generate_refresh_token():
+    return secrets.token_urlsafe(64)
